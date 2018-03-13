@@ -34,11 +34,7 @@ export default class Example extends Component {
   }
 
   get web3() {
-    return new Web3(
-      new Web3.providers.HttpProvider(
-        "https://rinkeby.infura.io/0zY4DU8r3wE3iXqvSxp1"
-      )
-    );
+    return new Web3(new Web3.providers.HttpProvider("http://localhost:8545/"));
   }
 
   render() {
