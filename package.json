@@ -1,0 +1,48 @@
+{
+  "name": "ethmoji-js-demo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Feridun Mert Celebi <mertcelebi93@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "copy-webpack-plugin": "^4.4.1",
+    "emotion": "^9.0.0",
+    "ethmoji-js": "^0.0.11",
+    "express": "^4.16.3",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-emotion": "^9.0.2",
+    "react-hot-loader": "^3.1.3",
+    "react-router-dom": "^4.2.2",
+    "web3": "^0.20.4",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}

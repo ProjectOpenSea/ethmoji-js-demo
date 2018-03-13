@@ -1,0 +1,8 @@
+{
+  "presets": [["es2015", { "modules": false }], "stage-2", "stage-3", "react"],
+  "plugins": [
+    "transform-decorators-legacy",
+    "emotion",
+    "react-hot-loader/babel"
+  ]
+}
