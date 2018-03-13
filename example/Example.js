@@ -1,41 +1,16 @@
 import React, { Component } from "react";
 import Web3 from "web3";
-import styled from "react-emotion";
 import EthmojiAPI from "ethmoji-js";
 
-const Container = styled("div")`
-  text-align: center;
-  padding: 20px;
-  font-family: Helvetica, Arial, sans-serif;
-`;
-
-const Title = styled("h1")`
-  font-weight: normal;
-  font-size: 2em;
-  margin: 0 0 10px;
-`;
-
-const Loading = styled("div")`
-  color: #aaa;
-`;
-
-const PageContainer = styled("div")`
-  width: 640px;
-  margin: 0 auto 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  @media (max-width: 700px) {
-    width: 100%;
-  }
-`;
-
-const Error = styled("div")`
-  background-color: #bb0000;
-  border: 1px solid #aa0000;
-  border-radius: 3px;
-  padding: 10px;
-  display: inline-block;
-  color: #fff;
-`;
+import {
+  Button,
+  Input,
+  Container,
+  Title,
+  Loader,
+  Spacer,
+  Avatar
+} from "./components";
 
 export default class Example extends Component {
   constructor(props) {
@@ -49,16 +24,21 @@ export default class Example extends Component {
     };
 
     this.setEthmojiAPI();
+    this.getAvatar = this.getAvatar.bind(this);
   }
 
   async setEthmojiAPI() {
-    this.state.api = new EthmojiAPI();
-    await this.state.api.init(this.web3.currentProvider);
-    this.state.status = "loaded";
+    const api = new EthmojiAPI();
+    await api.init(this.web3.currentProvider);
+    this.setState({ api: api, status: "loaded" });
   }
 
-  async getAvatar() {
-    this.state.avatar = await this.api.getAvatar(this.state.address);
+  async getAvatar(address) {
+    this.setState({
+      status: "loading"
+    });
+    const avatar = await this.state.api.getAvatar(address);
+    this.setState({ avatar: avatar, status: "loaded", address: address });
   }
 
   get web3() {
@@ -73,15 +53,28 @@ export default class Example extends Component {
     return (
       <Container>
         <Title>Ethmoji Avatar</Title>
+        <Spacer />
         <form
           onSubmit={e => {
             e.preventDefault();
             this.getAvatar(this.refs.address.value);
           }}
         >
-          <input type="text" ref="address" defaultValue={this.state.address} />
-          <input type="submit" value="Fetch Ethmoji Avatar" />
+          <Input
+            type="text"
+            ref="address"
+            placeholder="Enter Ethereum address..."
+            defaultValue={this.state.address}
+            disabled={this.state.status === "loading"}
+          />
+          <Spacer inline />
+          <Button type="submit">Fetch Ethmoji Avatar</Button>
         </form>
+        <Spacer />
+        {this.state.status === "loading" && <Loader>Loading...</Loader>}
+        {this.state.avatar !== undefined && (
+          <Avatar src={this.state.avatar.imageUrl} />
+        )}
       </Container>
     );
   }
