@@ -66,8 +66,6 @@ export const Title = styled("h1")`
   margin: 0 0 10px;
 `;
 
-export const Loader = styled("div")``;
-
 const spacerSize = (pads, props) => {
   return css`
     ${props.inline ? "width:" : "height:"} ${20 * pads}px;
