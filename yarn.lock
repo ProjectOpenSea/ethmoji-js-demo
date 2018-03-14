@@ -1148,13 +1148,13 @@ big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
 
-"bignumber.js@git+https://github.com/debris/bignumber.js#master":
-  version "2.0.7"
-  resolved "git+https://github.com/debris/bignumber.js#c7a38de919ed75e6fb6ba38051986e294b328df9"
-
 "bignumber.js@git+https://github.com/debris/bignumber.js.git#94d7146671b9719e00a09c29b01a691bc85048c2":
   version "2.0.7"
   resolved "git+https://github.com/debris/bignumber.js.git#94d7146671b9719e00a09c29b01a691bc85048c2"
+
+"bignumber.js@git+https://github.com/debris/bignumber.js.git#master":
+  version "2.0.7"
+  resolved "git+https://github.com/debris/bignumber.js.git#c7a38de919ed75e6fb6ba38051986e294b328df9"
 
 "bignumber.js@git+https://github.com/frozeman/bignumber.js-nolookahead.git":
   version "2.0.7"
@@ -2499,7 +2499,7 @@ ethjs-util@^0.1.3:
     is-hex-prefixed "1.0.0"
     strip-hex-prefix "1.0.0"
 
-ethmoji-contracts@^1.0.1:
+ethmoji-contracts@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ethmoji-contracts/-/ethmoji-contracts-1.0.1.tgz#2dc5d03c4cfd55f517ae9b18c04a98e645143971"
   dependencies:
@@ -2512,11 +2512,11 @@ ethmoji-contracts@^1.0.1:
     web3 "0.20.1"
     zeppelin-solidity "1.6.0"
 
-ethmoji-js@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/ethmoji-js/-/ethmoji-js-0.0.16.tgz#03f0ddbb90df00abdd1ddb579c5dfbc686667e01"
+ethmoji-js@^0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/ethmoji-js/-/ethmoji-js-0.0.17.tgz#27816afa137265e7a8d4df468fef3eb6c9e53bef"
   dependencies:
-    ethmoji-contracts "^1.0.1"
+    ethmoji-contracts "^1.0.0"
     humps "^2.0.1"
     jquery-param "^1.0.0"
     truffle-contract "^3.0.4"
