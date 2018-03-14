@@ -6,13 +6,9 @@ See the `/example` directory to learn more. If you'd like to contribute, please 
 
 ### Getting started
 
-Start a local blockchain using the [Ganache CLI](https://github.com/trufflesuite/ganache-cli).
+This demo assumes you have Metamask browser extension installed. You can download it [here](https://metamask.io/)
 
-```
-ganache-cli
-```
-
-Install packages and start server
+Install packages and start server:
 
 ```
 yarn

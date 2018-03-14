@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+
 var path = require("path");
 
 module.exports = {
@@ -17,7 +18,6 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       template: "./example/index.html"
     })

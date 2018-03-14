@@ -2,7 +2,7 @@ import styled, { css } from "react-emotion";
 
 export const Avatar = styled("img")`
   border-radius: 50%;
-  max-height: 200px;
+  max-height: 250px;
 `;
 
 export const Button = styled("button")`
@@ -45,6 +45,7 @@ export const Input = styled("input")`
   transition: all 0.15s ease-out;
   vertical-align: top;
   border: 2px solid #a9bac9;
+  width: 300px;
 
   &:hover,
   &:focus,
@@ -64,6 +65,10 @@ export const Title = styled("h1")`
   font-weight: normal;
   font-size: 2em;
   margin: 0 0 10px;
+`;
+
+export const Error = styled("div")`
+  color: red;
 `;
 
 const spacerSize = (pads, props) => {

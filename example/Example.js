@@ -2,46 +2,64 @@ import React, { Component } from "react";
 import Web3 from "web3";
 import EthmojiAPI from "ethmoji-js";
 
-import { Button, Input, Container, Title, Spacer, Avatar } from "./components";
+import {
+  Button,
+  Input,
+  Container,
+  Title,
+  Spacer,
+  Avatar,
+  Error
+} from "./components";
 
 export default class Example extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       status: "unset",
+      address: "",
       api: undefined,
       avatar: undefined,
-      address: ""
+      error: undefined
     };
 
     this.setEthmojiAPI();
     this.getAvatar = this.getAvatar.bind(this);
+    this.updateAddress = this.updateAddress.bind(this);
   }
 
   async setEthmojiAPI() {
-    const api = new EthmojiAPI();
-    await api.init(this.web3.currentProvider);
-    this.setState({ api: api, status: "set" });
+    try {
+      const api = new EthmojiAPI(global.web3.currentProvider);
+      await api.init();
+      this.setState({ api: api, status: "set" });
+    } catch (error) {
+      this.setState({ status: "error", error: error });
+    }
   }
 
-  async getAvatar(address) {
-    this.setState({
-      status: "loading"
-    });
-    const avatar = await this.state.api.getAvatar(address);
-    this.setState({ avatar: avatar, status: "loaded", address: address });
+  async getAvatar() {
+    this.setState({ status: "loading" });
+    const avatar = await this.state.api.getAvatar(this.state.address);
+    this.setState({ avatar: avatar, status: "loaded" });
   }
 
-  get web3() {
-    return new Web3(new Web3.providers.HttpProvider("http://localhost:8545/"));
+  updateAddress(event) {
+    this.setState({ address: event.target.value });
   }
 
   render() {
     return (
       <Container>
-        <Title>Ethmoji Avatar</Title>
+        <Title>Ethmoji Avatar Demo</Title>
         <Spacer />
+        {this.state.error !== undefined && (
+          <div>
+            <Error>{this.state.error.message}</Error>
+            <Spacer />
+          </div>
+        )}
+
         {this.state.status === "unset" ? (
           <div>Preparing...</div>
         ) : (
@@ -49,18 +67,25 @@ export default class Example extends Component {
             <form
               onSubmit={e => {
                 e.preventDefault();
-                this.getAvatar(this.refs.address.value);
+                this.getAvatar();
               }}
             >
               <Input
                 type="text"
                 ref="address"
                 placeholder="Enter Ethereum address..."
-                defaultValue={this.state.address}
+                onChange={event => this.updateAddress(event)}
                 disabled={this.state.status === "loading"}
               />
               <Spacer inline />
-              <Button type="submit" disabled={this.state.status === "loading"}>
+              <Button
+                type="submit"
+                disabled={
+                  this.state.status === "loading" ||
+                  this.state.status === "error" ||
+                  this.state.address === ""
+                }
+              >
                 {this.state.status === "loading"
                   ? "Fetching..."
                   : "Fetch Ethmoji Avatar"}
