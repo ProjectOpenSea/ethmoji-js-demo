@@ -2512,10 +2512,11 @@ ethmoji-contracts@^1.0.0:
     web3 "0.20.1"
     zeppelin-solidity "1.6.0"
 
-ethmoji-js@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/ethmoji-js/-/ethmoji-js-0.0.17.tgz#27816afa137265e7a8d4df468fef3eb6c9e53bef"
+ethmoji-js@^0.0.20:
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/ethmoji-js/-/ethmoji-js-0.0.20.tgz#0c44f8805e72c53d165300eaee913de2607706ba"
   dependencies:
+    babel-runtime "^6.26.0"
     ethmoji-contracts "^1.0.0"
     humps "^2.0.1"
     jquery-param "^1.0.0"
