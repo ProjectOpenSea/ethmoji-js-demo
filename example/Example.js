@@ -39,9 +39,13 @@ export default class Example extends Component {
   }
 
   async getAvatar() {
-    this.setState({ status: "loading" });
-    const avatar = await this.state.api.getAvatar(this.state.address);
-    this.setState({ avatar: avatar, status: "loaded" });
+    this.setState({ status: "loading", error: undefined });
+    try {
+      const avatar = await this.state.api.getAvatar(this.state.address);
+      this.setState({ avatar: avatar, status: "loaded" });
+    } catch (error) {
+      this.setState({ status: "error", error: error });
+    }
   }
 
   updateAddress(event) {
@@ -81,9 +85,7 @@ export default class Example extends Component {
               <Button
                 type="submit"
                 disabled={
-                  this.state.status === "loading" ||
-                  this.state.status === "error" ||
-                  this.state.address === ""
+                  this.state.status === "loading" || this.state.address === ""
                 }
               >
                 {this.state.status === "loading"
@@ -92,8 +94,14 @@ export default class Example extends Component {
               </Button>
             </form>
             <Spacer />
-            {this.state.avatar !== undefined && (
-              <Avatar src={this.state.avatar.imageUrl} />
+            {this.state.status === "loaded" && (
+              <div>
+                {this.state.avatar !== undefined ? (
+                  <Avatar src={this.state.avatar.imageUrl} />
+                ) : (
+                  <Error>No ethmoji avatar found for this address.</Error>
+                )}
+              </div>
             )}
           </div>
         )}
