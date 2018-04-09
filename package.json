@@ -1,6 +1,6 @@
 {
   "name": "ethmoji-js-demo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "scripts": {
     "start": "node server.js"
@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "emotion": "^9.0.0",
-    "ethmoji-js": "^0.0.25",
+    "ethmoji-js": "^0.0.27",
     "express": "^4.16.3",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
